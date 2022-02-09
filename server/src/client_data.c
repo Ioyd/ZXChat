@@ -196,8 +196,8 @@ void send_msgs(sqlite3 *db, char *chat_name, int sockfd, char *login)
     mx_str_concat(&to_send, "\1");
     concat_arr_to_str(&to_send, msg_arr);
     // print_to_send_str(to_send);
-    send_msg_to_cli(sockfd, to_send);
     send_chats_of_user(db, login, sockfd);
+    send_msg_to_cli(sockfd, to_send);
     mx_del_strarr(&msg_arr);
     mx_strdel(&to_send);
 }

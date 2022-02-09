@@ -6,9 +6,8 @@ void mx_founded_chats()
 
 void mx_search_chat(gpointer window)
 {
-
     GtkWidget *grid = gtk_container_get_children(GTK_CONTAINER(window))->data;
-    GtkWidget *sideGrid = g_list_next(gtk_container_get_children(GTK_CONTAINER(grid)))->data;
+    GtkWidget *sideGrid = gtk_container_get_children(GTK_CONTAINER(grid))->data; //segfault
 
     GList *sideGridChld = gtk_container_get_children(GTK_CONTAINER(sideGrid));
     sideGridChld = g_list_next(sideGridChld);

@@ -2,6 +2,8 @@
 
 int main(int argc, char *argv[])
 {
+    nameUs = "Komushki";
+    bio = "Не выбил деда(";
     bgImg = "wrapper";
     gtk_init(&argc, &argv);
     mx_connect(argc, argv);

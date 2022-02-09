@@ -8,6 +8,8 @@ void parse_str(char *str)
     user.login = mx_strdup(splited[0]);
     user.img = mx_strdup(splited[1]);
 
+    //fotoUs = mx_strdup(splited[1]);
+
     for (int i = 2; splited[i]; i++)
     {
         chat_t *chat = malloc(sizeof(chat_t));
@@ -16,11 +18,13 @@ void parse_str(char *str)
         chat->name = chat_params[0];
 
         chat->img = chat_params[1];
+
         last_msg->masage = chat_params[2];
         last_msg->time = chat_params[3];
         chat->lastMsg = last_msg;
         // mx_printstr(user.login);
         // mx_printstr(user.img);
+        // mx_printstr("\n");
         // mx_printstr(chat->name);
         // mx_printstr(chat->img);
         // mx_printstr(chat->lastMsg->masage);

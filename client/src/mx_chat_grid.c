@@ -2,10 +2,17 @@
 
 void mx_chat_grid(gpointer window)
 {
-    
 
     GtkWidget *grid;
     grid = gtk_container_get_children(GTK_CONTAINER(window))->data;
+
+    t_list *iter = chats_list;
+    while (iter != NULL)
+    {
+        if (mx_strcmp(((chat_t *)(iter->data))->name, opend_chat) == 0)
+            break;
+        iter = iter->next;
+    }
 
     GtkWidget *chat;
 
@@ -54,7 +61,6 @@ void mx_chat_grid(gpointer window)
 
     gtk_container_add(GTK_CONTAINER(scrolledwindow), space);
 
-
     footerColor = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_widget_set_size_request(GTK_WIDGET(footerColor), 1200, 80);
     gtk_widget_set_name(footerColor, "chatFooterColor");
@@ -62,7 +68,7 @@ void mx_chat_grid(gpointer window)
     gtk_widget_set_name(footer, "chatFooter");
     gtk_widget_set_size_request(GTK_WIDGET(footer), 1100, 40);
 
-    GdkPixbuf *px1 = gdk_pixbuf_new_from_file_at_size("img/send.png", 40, 40, NULL);
+    GdkPixbuf *px1 = gdk_pixbuf_new_from_file_at_size("img/send.png", 50, 50, NULL);
     imgSend = gtk_image_new_from_pixbuf(px1);
     // imgSend = gtk_image_new_from_file("img/send.png");
     sendBtn = gtk_button_new();
@@ -87,7 +93,8 @@ void mx_chat_grid(gpointer window)
     name = gtk_label_new(chatName);
     gtk_widget_set_name(name, "name");
 
-    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size("img/avatar.png", 40, 40, NULL);
+    char *ava = ((chat_t *)(iter->data))->img;
+    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size(ava, 40, 40, NULL);
     avatar = gtk_image_new_from_pixbuf(px);
     avatarBtn = gtk_button_new();
     gtk_widget_set_name(avatarBtn, "avatarBtn");

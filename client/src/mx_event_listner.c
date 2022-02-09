@@ -2,19 +2,20 @@
 
 void parse_msg(char *str)
 {
-
 }
 
 void *event_listner(gpointer window)
 {
     flag = 1;
+
     // gpointer *ochko = (gpointer)window;
     // ochko = NULL;
     int ccc = 0;
     while (COUNTER_GOVNA)
     {
+
         parse_str(load_main());
-    
+
         mx_printstr("\n");
         mx_printint(ccc);
         char *req = load_main();
@@ -32,7 +33,6 @@ void *event_listner(gpointer window)
                 if (mx_strcmp(curr_chat->name, param[1]) == 0)
                     break;
             }
-
             for (int i = 2; param[i]; i++, count++)
                 ;
 
@@ -48,14 +48,15 @@ void *event_listner(gpointer window)
             }
             curr_chat->msg[count] = NULL;
 
+            
             /*-------------------TEST-------------------*/
             //     while (chats_list)
             //     {
-            for (int i = 0; ((chat_t *)(chats_list->data))->msg[i]; i++)
-            {
-                mx_printstr(((chat_t *)(chats_list->data))->msg[i]->masage);
-                mx_printstr(((chat_t *)(chats_list->data))->msg[i]->time);
-            }
+            // for (int i = 0; ((chat_t *)(chats_list->data))->msg[i]; i++)
+            // {
+            //     mx_printstr(((chat_t *)(chats_list->data))->msg[i]->masage);
+            //     mx_printstr(((chat_t *)(chats_list->data))->msg[i]->time);
+            // }
             //chats_list = chats_list->next;
             //     }
             /*-------------------END OF TEST-------------------*/
@@ -68,8 +69,7 @@ void *event_listner(gpointer window)
         {
         }
         ccc++;
-        
-        
+
         mx_main_page(window);
         mx_chat_grid(window);
     }

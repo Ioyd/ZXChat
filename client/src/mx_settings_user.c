@@ -6,7 +6,7 @@ void mx_settings_user(gpointer window)
     //     // IMAGES
     GtkWidget *grid = gtk_container_get_children(GTK_CONTAINER(window))->data;
     GList *sideGridList = gtk_container_get_children(GTK_CONTAINER(grid));
-    sideGridList = g_list_next(sideGridList);
+    //sideGridList = g_list_next(sideGridList);
     GtkWidget *sideGrid = sideGridList->data;
 
     GtkWidget *imgBack;
@@ -32,6 +32,7 @@ void mx_settings_user(gpointer window)
     GtkWidget *bio;
     GtkWidget *labelBio;
 
+    mx_printstr("               1111               ");
     GList *iter = gtk_container_get_children(GTK_CONTAINER(sideGrid));
     for (; iter != NULL; iter = g_list_next(iter))
         gtk_widget_destroy(iter->data);
@@ -57,21 +58,19 @@ void mx_settings_user(gpointer window)
     userBox = gtk_grid_new();
     gtk_grid_set_column_spacing(GTK_GRID(userBox), 2);
     gtk_grid_set_row_spacing(GTK_GRID(userBox), 2);
-
-    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size("img/wallpaperbetter.jpg", 40, 40, NULL);
+    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size(user.img, 90, 90, NULL);
     imgUser = gtk_image_new_from_pixbuf(px);
     gtk_image_set_pixel_size(GTK_IMAGE(imgUser), 50);
-    gtk_widget_set_size_request(GTK_WIDGET(imgUser), 75, 70);
+    // gtk_widget_set_size_request(GTK_WIDGET(imgUser), 75, 70);
     gtk_widget_set_name(imgUser, "imgChatMenu");
 
-    gchar *login = g_str_to_ascii("@komushki", NULL);
-
+    // gchar *login = g_str_to_ascii("@komushki", NULL);
 
     nameUser = gtk_label_new("change foto");
     gtk_widget_set_name(nameUser, "nameChatMenu");
     gtk_widget_set_size_request(GTK_WIDGET(nameUser), 180, 10);
 
-    loginUser = gtk_label_new(login);
+    loginUser = gtk_label_new((gchar *)login);
     gtk_widget_set_name(loginUser, "lastMassageChatMenu");
     gtk_widget_set_size_request(GTK_WIDGET(loginUser), 150, 10);
 
@@ -87,14 +86,16 @@ void mx_settings_user(gpointer window)
 
     labelName = gtk_label_new("Name");
     name = gtk_entry_new();
-    char *nameText = "Komushki";
-    GtkEntryBuffer *textName = gtk_entry_buffer_new(nameText, 8);
+    gtk_widget_set_name(name, "entr");
+    // char *nameText = "Komushki";
+    GtkEntryBuffer *textName = gtk_entry_buffer_new((gchar *)nameUs, 8);
     gtk_entry_set_buffer(GTK_ENTRY(name), textName);
 
     labelBio = gtk_label_new("Bio");
     bio = gtk_entry_new();
-    char *bioText = "Komushki";
-    GtkEntryBuffer *textBio = gtk_entry_buffer_new(bioText, 8);
+    gtk_widget_set_name(bio, "entr");
+    // char *bioText = "Komushki";
+    GtkEntryBuffer *textBio = gtk_entry_buffer_new((gchar *)bio, 8);
     gtk_entry_set_buffer(GTK_ENTRY(bio), textBio);
 
     gtk_container_add(GTK_CONTAINER(settings), labelName);
@@ -116,7 +117,7 @@ void mx_settings_user(gpointer window)
 
     //     g_signal_connect_swapped(G_OBJECT(accSet), "clicked", G_CALLBACK(mx_settings_user), G_OBJECT(window));
 
-    g_signal_connect_swapped(G_OBJECT(back), "clicked", G_CALLBACK(mx_main_page), G_OBJECT(window));
+    g_signal_connect_swapped(G_OBJECT(back), "clicked", G_CALLBACK(mx_settings_page), G_OBJECT(window));
 
     gtk_widget_show_all(sideGrid);
 }

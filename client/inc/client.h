@@ -39,7 +39,11 @@ t_list *chats_list;
 user_t user;
 char *opend_chat;
 
+char *login;
+char *nameUs;
+char *bio;
 bool flag;
+char * fotoUs;
 char *bgImg;
 #define SA struct sockaddr
 #define COUNTER_GOVNA 228

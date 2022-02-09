@@ -59,17 +59,15 @@ void mx_settings_page(gpointer window)
     userBox = gtk_grid_new();
     gtk_grid_set_column_spacing(GTK_GRID(userBox), 2);
     gtk_grid_set_row_spacing(GTK_GRID(userBox), 2);
-
-    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size("img/wallpaperbetter.jpg", 40, 40, NULL);
+    
+    //mx_printstr(user.img);
+    GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size(user.img, 90, 90, NULL);
     imgUser = gtk_image_new_from_pixbuf(px);
     gtk_image_set_pixel_size(GTK_IMAGE(imgUser), 50);
     gtk_widget_set_size_request(GTK_WIDGET(imgUser), 75, 70);
     gtk_widget_set_name(imgUser, "imgChatMenu");
 
-    gchar *login = g_str_to_ascii("@komushki", NULL);
-    gchar *name = g_str_to_ascii("KOMUSHKI", NULL);
-
-    nameUser = gtk_label_new(name);
+    nameUser = gtk_label_new(nameUs);
     gtk_widget_set_name(nameUser, "nameChatMenu");
     gtk_widget_set_size_request(GTK_WIDGET(nameUser), 180, 10);
 

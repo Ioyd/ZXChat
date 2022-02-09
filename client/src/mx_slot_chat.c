@@ -10,7 +10,7 @@ void mx_slot_chat(gpointer bbb, gpointer window)
 
     // GtkWidget *grid;
     // grid = gtk_container_get_children(GTK_CONTAINER(window))->data;
-
+    mx_printstr("\ntest1\n");
     GtkWidget *chatField;
     GtkWidget *chatBox;
     GtkWidget *imgChat;
@@ -23,7 +23,6 @@ void mx_slot_chat(gpointer bbb, gpointer window)
     int count = 0;
     for (t_list *iter = chats_list; iter != NULL; iter = iter->next)
     {
-        mx_printstr("asd");
         chat_t *curr_chat = iter->data;
         message_t *curr_msg = curr_chat->lastMsg;
 
@@ -36,8 +35,7 @@ void mx_slot_chat(gpointer bbb, gpointer window)
         gtk_widget_set_name(chatBox, "1");
         gtk_grid_set_column_spacing(GTK_GRID(chatBox), 3);
         gtk_grid_set_row_spacing(GTK_GRID(chatBox), 2);
-        GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size(curr_chat->img, 40, 40, NULL);
-
+        GdkPixbuf *px = gdk_pixbuf_new_from_file_at_size(curr_chat->img, 90, 90, NULL);
         imgChat = gtk_image_new_from_pixbuf(px);
         gtk_image_set_pixel_size(GTK_IMAGE(imgChat), 50);
         gtk_widget_set_size_request(GTK_WIDGET(imgChat), 75, 70);
@@ -52,12 +50,15 @@ void mx_slot_chat(gpointer bbb, gpointer window)
             if (mx_strcmp(temp[0], user.login) == 0)
             {
                 chatName = temp[1];
+                login = temp[0];
             }
             else
+            {
                 chatName = temp[0];
+                login = temp[1];
+            }
         }
 
-        mx_printstr(chatName);
         gchar *nameChatText = g_str_to_ascii(chatName, NULL);
         gchar *gTime = g_str_to_ascii(curr_chat->lastMsg->time, NULL);
         // gchar *showChat = malloc(sizeof(gchar) * 11);

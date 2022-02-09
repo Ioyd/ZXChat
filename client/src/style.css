@@ -249,6 +249,14 @@ box:hover {
   -webkit-text-stroke: 0.07em rgba(0, 0, 0, 0.5);
   text-shadow: 0.07em 0 rgb(47, 48, 49);
 }
+#menu4{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: rgb(14, 1, 1);
+  font-size: 30px;
+  -webkit-text-stroke: 0.07em rgba(0, 0, 0, 0.5);
+  text-shadow: 0.07em 0 rgb(47, 48, 49);
+}
 #userButtSet {
   padding-top: 20px;
   border-top: 4px solid rgb(47, 48, 49);
@@ -285,8 +293,20 @@ box:hover {
 }
 #mesfon {
   margin-bottom: 15px;
-  font-size: 10px;
+  font-size: 20px;
   padding: 10px;
   background-color: #dbdbdb;
   border-radius: 15px;
+}
+#time{
+  padding-left: 8px;
+  color:#2b2b2b;
+  font-size: 10px;
+}
+#entr{
+  background-color: #797979;
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 8px;
+  margin-right: 15px;
 }

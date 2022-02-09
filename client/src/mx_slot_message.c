@@ -12,7 +12,7 @@ void mx_slot_message(gpointer bbb)
         if (mx_strcmp(((chat_t *)(iter->data))->name, opend_chat) == 0)
             break;
     }
-    
+
     // message_t *mmm = ((chat_t *)(iter->data))->;
 
     GtkWidget *messageBox;
@@ -22,9 +22,9 @@ void mx_slot_message(gpointer bbb)
     // gtk_grid_set_column_spacing(GTK_GRID(messageGrid), 1);
     // gtk_grid_set_row_spacing(GTK_GRID(messageGrid), 2);
     message_t **cur_chat_mess = ((chat_t *)(iter->data))->msg;
-    mx_printint(cur_chat_mess[0]==NULL);
+    mx_printint(cur_chat_mess[0] == NULL);
     // gtk_grid_attach(GTK_GRID(grid), sidePanel, 0, 1, 1, 1);
-    for (int i = 0; cur_chat_mess[i]!=NULL; i++)
+    for (int i = 0; cur_chat_mess[i] != NULL; i++)
     {
         mx_printstr("asdasd");
         messageBox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
@@ -34,7 +34,11 @@ void mx_slot_message(gpointer bbb)
 
         char *chatName = cur_chat_mess[i]->masage;
         messadeText = gtk_label_new(chatName);
+        char *timeMes = cur_chat_mess[i]->time;
+        GtkWidget *time = gtk_label_new(timeMes);
         gtk_container_add(GTK_CONTAINER(messageBox), messadeText);
+        gtk_container_add(GTK_CONTAINER(messageBox), time);
+        gtk_widget_set_name(time, "time");
         if (cur_chat_mess[i]->to == 0)
         {
             gtk_widget_set_halign(messageBox, GTK_ALIGN_START);
